@@ -22,4 +22,13 @@ router.get("/:id/shows", async (req, res) => {
   res.json(theUser);
 });
 
+router.post("/", async (req, res) => {
+  const { userId, showId } = req.body;
+  const theUser = await User.findByPk(userId);
+  const theShow = await Show.findByPk(showId);
+
+  const result = await theUser.addShow(theShow);
+  res.json(result);
+});
+
 module.exports = router;
