@@ -7,7 +7,7 @@ const Show = db.define("shows", {
   genre: DataTypes.STRING,
   rating: DataTypes.INTEGER,
   available: DataTypes.BOOLEAN,
-  watched: DataTypes.INTEGER,
+  watchedCount: { type: DataTypes.INTEGER, defaultValue: 0 },
 });
 
 //exports

@@ -14,26 +14,9 @@ router.get("/:id", async (req, res) => {
   res.json(theUser);
 });
 
-router.get("/history/:id", async (req, res) => {
+router.get("/:id/shows", async (req, res) => {
   const theId = req.params.id;
-  //   const theUser = await User.findOne({
-  //     where: { id: theId },
-  //     include: [
-  //       {
-  //         model: Show,
-  //         through: "watched",
-  //         //attributes: ["id", "title"], // attributes you wanna include
-  //       },
-  //     ],
-  //   })
-  //     .then((user) => {
-  //       console.log(user.toJSON());
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-
-  const data = await User.findByPk(theId, {
+  const theUser = await User.findByPk(theId, {
     include: [{ model: Show, through: "watched" }],
   });
   res.json(theUser);
